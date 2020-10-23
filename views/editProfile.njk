@@ -1,0 +1,12 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+    <form action="">
+        <div>
+            <label for="file">avatar</label>
+            <input type="file" id='file' accept="image/*">
+        </div>
+        <input type="text" value="{{user.name}}">
+        <input type="text" value="{{user.email}}">
+    </form>
+{% endblock %}

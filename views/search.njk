@@ -1,0 +1,14 @@
+{% import "macros/videoBlock.njk" as videoBlock %}
+
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+    <div class='u-full-width'>
+        <h1>searching by
+            {{keyword}}</h1>
+    </div>
+    {% for video in videos %}
+        {{videoBlock.home(video)}}
+    {% endfor %}
+
+{% endblock %}

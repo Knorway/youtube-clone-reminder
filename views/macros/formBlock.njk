@@ -1,0 +1,54 @@
+{% macro join() %}
+    <div >
+        <h1>Join</h1>
+        <form action="/join" method='post'>
+            <input type="text" placeholder='name' name='name' required="required">
+            <input type="email" placeholder='email' name='email' required="required">
+            <input type="password" placeholder='password' name='password' required="required">
+            <input type="password" placeholder='confirm password' name='password2' required="required">
+            <button>Join now</button>
+        </form>
+    </div>
+{% endmacro %}
+
+{% macro login() %}
+    <div class='u-full-width'>
+        <h1>Login</h1>
+    </div>
+    <form action="/login" method='post'>
+        <input type="email" placeholder='email' name='email' required="required">
+        <input type="password" placeholder='password' name='password' required="required">
+        <button>Login</button>
+        <a href="">
+            <button>Login with Github</button>
+        </a>
+    </form>
+{% endmacro %}
+
+{% macro upload() %}
+    <div style='display: flex; flex-direction: column' class="container">
+        <h1>Upload</h1>
+        <form action="/upload" method='post' enctype="multipart/form-data" style='display: flex; flex-direction: column'>
+            <div>
+                <label for="file">video file</label>
+                <input type="file" id='file' name='videoFile' accept='video/*' required="required">
+            </div>
+            <input type="text" placeholder='title' name='title' required="required">
+            <textarea name='description' placeholder='description' required="required"></textarea>
+            <button>Upload Video</button>
+        </form>
+    </div>
+{% endmacro %}
+
+{% macro editVideo(video = {}) %}
+    <div style='display: flex; flex-direction: column;' class='u-full-width'>
+        <form action="/videos/{{video.id}}/edit" method='post' style='display: flex; flex-direction: column' class='u-full-width'>
+            <input type="text" name='title' value="{{video.title}}">
+            <textarea name='description'>{{video.description}}</textarea>
+            <button>edit video</button>
+        </form>
+        <form action="/videos/{{video.id}}/delete" method='post'>
+            <button style='background-color: #c92a2a; color: white; border: none;'>delete video</button>
+        </form>
+    </div>
+{% endmacro %}

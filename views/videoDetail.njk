@@ -1,0 +1,17 @@
+{% import "macros/videoBlock.njk" as videoBlock %}
+
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+
+    <div class='container'>
+        {{videoBlock.detail(video)}}
+
+        {% if video.creator.id == loggedUser.id %}
+            <a href="/videos/{{video.id}}/edit">
+                <button>Edit Video</button>
+            </a>
+        {% endif %}
+    </div>
+
+{% endblock %}

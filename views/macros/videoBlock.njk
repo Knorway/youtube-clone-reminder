@@ -1,0 +1,29 @@
+{% macro home(video = {}) %}
+    <div style='padding: 6px;'>
+        <a href='/videos/{{video.id}}'>
+            <video src="{{video.fileUrl}}" height='300'></video>
+        </a>
+        <h5>{{video.title}}</h5>
+    </div>
+{% endmacro %}
+
+{% macro detail(video = {}) %}
+    <div>
+        <video src="{{video.fileUrl}}" controls="controls" width='700' height='400'></video>
+        <h3>{{video.title}}</h3>
+        <p>{{video.description}}</p>
+        {% if video.views === 1 %}
+            <p>{{video.views}}
+                view</p>
+
+        {% else %}
+            <p style='font-size: 13px;'>{{video.views}}
+                <em>views</em>
+            </p>
+        {% endif %}
+        <p>created by
+            <a href="/profile/{{video.creator.id}}" style="color: #339af0; text-decoration:none;">{{video.creator.name}}</a>
+        </p>
+
+    </div>
+{% endmacro %}

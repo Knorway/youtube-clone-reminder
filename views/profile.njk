@@ -1,0 +1,20 @@
+{% extends "layouts/main.njk" %}
+
+{% block content %}
+    <div style='display: flex; flex-direction: column; text-align: center;' class='container'>
+        <h1>{{user.name}}</h1>
+        <h5>{{user.email}}</h5>
+        <div >
+            <div>
+                <a href="/edit-profile">
+                    <button>Edit Profile</button>
+                </a>
+            </div>
+            <div>
+                <a href="/change-password">
+                    <button>Change Password</button>
+                </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
