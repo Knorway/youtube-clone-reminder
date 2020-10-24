@@ -7,15 +7,19 @@
     </div>
 {% endmacro %}
 
-{% macro detail(video = {}) %}
+{% macro detail(video = {}, loggedUser = {}) %}
     <div>
         <video src="{{video.fileUrl}}" controls="controls" width='700' height='400'></video>
+        {% if loggedUser and video.creator.id == loggedUser.id %}
+            <a href="/videos/{{video.id}}/edit">
+                <button>Edit Video</button>
+            </a>
+        {% endif %}
         <h3>{{video.title}}</h3>
         <p>{{video.description}}</p>
         {% if video.views === 1 %}
             <p>{{video.views}}
                 view</p>
-
         {% else %}
             <p style='font-size: 13px;'>{{video.views}}
                 <em>views</em>
@@ -24,6 +28,5 @@
         <p>created by
             <a href="/profile/{{video.creator.id}}" style="color: #339af0; text-decoration:none;">{{video.creator.name}}</a>
         </p>
-
     </div>
 {% endmacro %}

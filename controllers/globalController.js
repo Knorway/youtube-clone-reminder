@@ -5,6 +5,7 @@ const passport = require('passport');
 module.exports.render = {};
 module.exports.send = {};
 module.exports.then = {};
+module.exports.auth = {};
 
 // render
 exports.render.home = async (req, res) => {
@@ -44,11 +45,14 @@ exports.render.editProfile = async (req, res) => {
 exports.render.changePassword = (req, res) => {
 	res.render('changePassword');
 };
+exports.render.admin = (req, res) => {
+	res.render('layouts/mainAdmin');
+};
 
 // send
 exports.send.join = async (req, res, next) => {
 	const { name, email, password, password2 } = req.body;
-	if (!password2 === password2) {
+	if (password2 !== password2) {
 		res.staus(400);
 		res.render('join');
 	} else {
@@ -87,6 +91,36 @@ exports.send.uploadVideo = async (req, res) => {
 	}
 };
 
+exports.send.editProfile = async (req, res) => {
+	const { name } = req.body;
+	try {
+		await User.findByIdAndUpdate(req.user.id, {
+			name,
+		});
+		res.redirect(`/profile/${req.user.id}`);
+	} catch (error) {
+		console.log(error);
+		res.redirect(`/profile/${req.user.id}`);
+	}
+};
+
+exports.send.changePassword = async (req, res) => {
+	const { oldPassword, newPassword, newPassword2 } = req.body;
+	try {
+		if (newPassword !== newPassword2) {
+			res.status(400);
+			res.redirect('/change-password');
+			return;
+		}
+		await req.user.changePassword(oldPassword, newPassword);
+		res.redirect(`/profile/${req.user.id}`);
+	} catch (error) {
+		res.status(400);
+		res.redirect('/change-password');
+		console.log(error);
+	}
+};
+
 // then
 exports.then.logLocalIn = passport.authenticate('local', {
 	successRedirect: '/',
@@ -94,5 +128,32 @@ exports.then.logLocalIn = passport.authenticate('local', {
 });
 exports.then.logout = (req, res) => {
 	req.logout();
-	res.redirect('/');
+	req.session.destroy((err) => {
+		res.redirect('/');
+	});
+};
+
+// auth
+exports.auth.githubCallback = async (_, __, profile, callback) => {
+	const {
+		_json: { id, login: name, email, avatar_url },
+	} = profile;
+	try {
+		const user = await User.findOne({ email });
+		if (user) {
+			user.githubId = id;
+			user.save();
+			return callback(null, user);
+		}
+		const newUser = await User.create({
+			name,
+			email,
+			githubId: id,
+			avatarUrl: avatar_url,
+		});
+		return callback(null, newUser);
+	} catch (err) {
+		callback(err);
+		console.log(err);
+	}
 };

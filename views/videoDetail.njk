@@ -5,13 +5,14 @@
 {% block content %}
 
     <div class='container'>
-        {{videoBlock.detail(video)}}
+        {{videoBlock.detail(video, loggedUser)}}
+    </div>
 
-        {% if video.creator.id == loggedUser.id %}
-            <a href="/videos/{{video.id}}/edit">
-                <button>Edit Video</button>
-            </a>
-        {% endif %}
+    <hr/>
+
+    <div>
+        <h5>comments</h5>
+        <input type="text" name="" id="" placeholder='add your comments'>
     </div>
 
 {% endblock %}

@@ -1,5 +1,6 @@
 const express = require('express');
 const { render, send } = require('../controllers/videoController');
+const { onlyPrivate } = require('../middleware');
 
 const videoRouter = express.Router();
 
@@ -7,10 +8,10 @@ const videoRouter = express.Router();
 
 // GET
 videoRouter.get('/:id', render.videoDetail);
-videoRouter.get('/:id/edit', render.editVideo);
+videoRouter.get('/:id/edit', onlyPrivate, render.editVideo);
 
 // POST
-videoRouter.post('/:id/edit', send.editVideo);
-videoRouter.post('/:id/delete', send.deleteVideo);
+videoRouter.post('/:id/edit', onlyPrivate, send.editVideo);
+videoRouter.post('/:id/delete', onlyPrivate, send.deleteVideo);
 
 module.exports = videoRouter;

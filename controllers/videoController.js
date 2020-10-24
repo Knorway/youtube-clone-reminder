@@ -14,8 +14,17 @@ exports.render.videoDetail = async (req, res) => {
 };
 exports.render.editVideo = async (req, res) => {
 	const { id } = req.params;
-	const video = await Video.findById(id);
-	res.render('editVideo', { video });
+	try {
+		const video = await Video.findById(id).populate('creator');
+		if (video.creator.id !== req.user.id) {
+			throw Error();
+		} else {
+			res.render('editVideo', { video });
+		}
+	} catch (error) {
+		console.log(error);
+		res.redirect('/');
+	}
 };
 
 // send
@@ -25,11 +34,16 @@ exports.send.editVideo = async (req, res) => {
 		params: { id },
 	} = req;
 	try {
-		await Video.findByIdAndUpdate({ _id: id }, { title, description });
-		res.redirect(`/videos/${id}`);
+		const video = await Video.findById(id);
+		if (String(video.creator) !== req.user.id) {
+			throw Error();
+		} else {
+			await Video.findByIdAndUpdate({ _id: id }, { title, description });
+			res.redirect(`/videos/${id}`);
+		}
 	} catch (err) {
 		console.log(err);
-		res.redirect(`/videos/${id}/edit`);
+		res.redirect(`/`);
 	}
 };
 exports.send.deleteVideo = async (req, res) => {
@@ -37,7 +51,7 @@ exports.send.deleteVideo = async (req, res) => {
 	try {
 		const video = await Video.findById(id);
 		// console.log(video.creator.toHexString() === req.user.id);
-		if (video.creator != req.user.id) {
+		if (String(video.creator) !== req.user.id) {
 			throw Error();
 		} else {
 			await Video.findByIdAndRemove(id);

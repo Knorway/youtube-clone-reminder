@@ -5,16 +5,32 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-module.exports.only = {};
-
-exports.only.public = '';
-exports.only.user = '';
-exports.only.admin = '';
-
 module.exports.localsMiddleware = (req, res, next) => {
 	res.locals.loggedUser = req.user || null;
 	res.locals.pagetitle = 'VideoLog';
 	next();
+};
+
+module.exports.onlyPublic = (req, res, next) => {
+	if (req.user) {
+		res.redirect('/');
+	} else {
+		next();
+	}
+};
+module.exports.onlyPrivate = (req, res, next) => {
+	if (req.user) {
+		next();
+	} else {
+		res.redirect('/');
+	}
+};
+module.exports.onlyAdmin = (req, res, next) => {
+	if (req.user && req.user.role === 9) {
+		next();
+	} else {
+		res.redirect('/');
+	}
 };
 
 const s3 = new aws.S3({

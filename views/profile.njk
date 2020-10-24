@@ -5,16 +5,18 @@
         <h1>{{user.name}}</h1>
         <h5>{{user.email}}</h5>
         <div >
-            <div>
-                <a href="/edit-profile">
-                    <button>Edit Profile</button>
-                </a>
-            </div>
-            <div>
-                <a href="/change-password">
-                    <button>Change Password</button>
-                </a>
-            </div>
+            {% if loggedUser and loggedUser.id == user.id %}
+                <div>
+                    <a href="/edit-profile">
+                        <button>Edit Profile</button>
+                    </a>
+                </div>
+                <div>
+                    <a href="/change-password">
+                        <button>Change Password</button>
+                    </a>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
