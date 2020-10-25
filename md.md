@@ -7,4 +7,4 @@
 
 ## Make this my first portfolio
 - [ ] styling (card, layouts, recent)
-- [ ] organizing (fake vlogs, Md on github, etc) 
+- [ ] organizing (fake vlogs, Md on github, recording, etc) 

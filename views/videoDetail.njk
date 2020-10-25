@@ -8,11 +8,22 @@
         {{videoBlock.detail(video, loggedUser)}}
     </div>
 
-    <hr/>
-
     <div>
         <h5>comments</h5>
-        <input type="text" name="" id="" placeholder='add your comments'>
+        <form id="commentInput">
+            <input type="text" name='comment' placeholder='add your comments'>
+        </form>
+        <ul id='comment-list'>
+            {% for comment in video.comments | reverse%}
+                <span>
+                    <li>{{comment.text}}
+                        {% if comment.creator == user.id %}
+                            <i class="fas fa-trash" id='delete-icon'></i>
+                        {% endif %}
+                    </li>
+                </span>
+            {% endfor %}
+        </ul>
     </div>
 
 {% endblock %}

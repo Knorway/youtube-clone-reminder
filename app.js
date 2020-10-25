@@ -12,6 +12,7 @@ const sesseion = require('express-session');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const mongoStore = require('connect-mongo');
+const apiRouter = require('./routers/apiRouter');
 require('./passport');
 
 const app = express();
@@ -31,8 +32,8 @@ nunjucks.configure('views', {
 app.use(helmet({ contentSecurityPolicy: false }));
 app.use(bodyPaser.json());
 app.use(bodyPaser.urlencoded({ extended: true }));
-app.use('/static', express.static('static'));
 app.use(cookieParser());
+app.use('/static', express.static('static'));
 app.use(morgan('dev'));
 app.use(
 	sesseion({
@@ -50,5 +51,6 @@ app.use(localsMiddleware);
 
 app.use('/', globalRouter);
 app.use('/videos', videoRouter);
+app.use('/api', apiRouter);
 
 module.exports = app;

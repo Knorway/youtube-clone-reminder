@@ -9,7 +9,9 @@ exports.render.videoDetail = async (req, res) => {
 		params: { id },
 		user,
 	} = req;
-	const video = await Video.findById(id).populate('creator');
+	const video = await Video.findById(id)
+		.populate('creator')
+		.populate('comments');
 	res.render('videoDetail', { video, user });
 };
 exports.render.editVideo = async (req, res) => {
