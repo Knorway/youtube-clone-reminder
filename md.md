@@ -2,7 +2,7 @@
 - [x] edit password / profile
 - [x] route protection & error redirection
 - [x] create & delete comments / counting views
-- [ ] video recording
+- [x] video recording
 - [ ] deploy
 
 ## Make this my first portfolio
