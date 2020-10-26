@@ -2,6 +2,7 @@ const express = require('express');
 const nunjucks = require('nunjucks');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const path = require('path');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const globalRouter = require('./routers/globalRouter');
@@ -33,7 +34,7 @@ app.use(helmet({ contentSecurityPolicy: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
-app.use('/static', express.static('static'));
+app.use('/static', express.static(path.join(__dirname, 'static')));
 app.use(morgan('dev'));
 app.use(
 	sesseion({
