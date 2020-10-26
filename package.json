@@ -2,7 +2,6 @@
   "name": "videolog",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
   "scripts": {
     "dev:server": "nodemon server.js",
     "dev:assets": "webpack --mode development -w",
