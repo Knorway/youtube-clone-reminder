@@ -6,6 +6,8 @@ const apiRouter = express.Router();
 // /api
 
 // POST
-apiRouter.post('/:id/comment', send.addComment);
+apiRouter.post('/:id/comment/add', send.addComment);
+apiRouter.post('/:id/comment/delete', send.deleteComment);
+apiRouter.post('/:id/view/plus', send.plusView);
 
 module.exports = apiRouter;

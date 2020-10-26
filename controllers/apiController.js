@@ -4,23 +4,44 @@ const Comment = require('../models/Comment');
 module.exports.send = {};
 
 exports.send.addComment = async (req, res) => {
-	const {
-		params: { id },
-		body: { data: comment },
-		user,
-	} = req;
-	console.log(id, user.id, comment);
-	try {
-		const video = await Video.findById(id);
-		const newComment = await Comment.create({
-			text: comment,
-			creator: user.id,
-		});
-		video.comments.push(newComment.id);
-		video.save();
-	} catch (error) {
-		console.log(error);
-		res.status(400);
+	if (req.user) {
+		const {
+			params: { id },
+			body: { data: comment },
+			user,
+		} = req;
+		try {
+			const video = await Video.findById(id);
+			const newComment = await Comment.create({
+				text: comment,
+				creator: user.id,
+			});
+			video.comments.push(newComment.id);
+			video.save();
+			res.json({ success: true, id: newComment.id });
+		} catch (error) {
+			console.log(error);
+			res.status(400);
+		}
+	} else {
+		res.json({ error: 'login required', redirect: '/login' });
 	}
-	res.end();
+};
+
+exports.send.deleteComment = async (req, res) => {
+	if (req.user) {
+		const { data } = req.body;
+		try {
+			await Comment.findByIdAndDelete(data);
+		} catch (error) {
+			console.log(error);
+		} finally {
+			res.end();
+		}
+	} else {
+		res.redirect('/');
+	}
+};
+exports.send.plusView = async (req, res) => {
+	console.log(`hey`);
 };

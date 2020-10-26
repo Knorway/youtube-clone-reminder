@@ -1,6 +1,6 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
-const bodyPaser = require('body-parser');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
 const morgan = require('morgan');
@@ -30,8 +30,8 @@ nunjucks.configure('views', {
 });
 
 app.use(helmet({ contentSecurityPolicy: false }));
-app.use(bodyPaser.json());
-app.use(bodyPaser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use('/static', express.static('static'));
 app.use(morgan('dev'));
