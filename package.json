@@ -6,7 +6,7 @@
     "dev:server": "nodemon server.js",
     "dev:assets": "webpack --mode development -w",
     "build:assets": "webpack --mode production",
-    "postinstall": "webpack -p --config ./webpack.config.js --progress",
+    "postinstall": "npm run build:assets",
     "start": "node server.js"
   },
   "keywords": [],
