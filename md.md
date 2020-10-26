@@ -3,7 +3,7 @@
 - [x] route protection & error redirection
 - [x] create & delete comments / counting views
 - [x] video recording
-- [ ] deploy
+- [x] deploy
 
 ## Make this my first portfolio
 - [ ] styling (card, layouts, recent)
