@@ -43,5 +43,14 @@ exports.send.deleteComment = async (req, res) => {
 	}
 };
 exports.send.plusView = async (req, res) => {
-	console.log(`hey`);
+	const { id } = req.params;
+	try {
+		const video = await Video.findById(id);
+		video.views += 1;
+		video.save();
+	} catch (error) {
+		console.log(error);
+	} finally {
+		res.end();
+	}
 };

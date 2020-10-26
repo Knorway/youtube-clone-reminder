@@ -18,13 +18,15 @@
         <h3>{{video.title}}</h3>
         <p>{{video.description}}</p>
         {% if video.views === 1 %}
-            <p>{{video.views}}
+            <span>
+                <span style='font-size: 13px;' id='viewNum'>{{video.views}}</span>
                 <em>view</em>
-            </p>
+            </span>
         {% else %}
-            <p style='font-size: 13px;'>{{video.views}}
+            <span style='font-size: 13px;' id='viewNum'>
+                <span>{{video.views}}</span>
                 <em>views</em>
-            </p>
+            </span>
         {% endif %}
         <p>created by
             <a href="/profile/{{video.creator.id}}" style="color: #339af0; text-decoration:none;">{{video.creator.name}}</a>
