@@ -1,0 +1,40 @@
+.detail-container {
+	display: flex;
+	justify-content: center;
+	#videoDetailContainer {
+		video {
+			max-width: 100%;
+			max-height: 700px;
+			outline: none;
+			margin-bottom: 1.5rem;
+		}
+	}
+	.video-edit-btn {
+		display: block;
+	}
+}
+.comment-section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	#commentInput {
+		input {
+			width: 320px;
+		}
+	}
+	#comment-list {
+		list-style-type: none;
+		.comment-item {
+			padding: 15px 30px;
+			background-color: #e9ecef;
+			border-radius: 20px;
+			border-bottom-right-radius: 0;
+			text-align: center;
+			width: 320px;
+			word-wrap: break-word;
+			.delete-icon {
+				cursor: pointer;
+			}
+		}
+	}
+}

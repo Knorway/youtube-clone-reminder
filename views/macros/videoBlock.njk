@@ -1,17 +1,21 @@
 {% macro home(video = {}) %}
-    <div style='padding: 6px;'>
+    <div class='home-card-container'>
         <a href='/videos/{{video.id}}'>
-            <video src="{{video.fileUrl}}" height='300'></video>
+            <video src="{{video.fileUrl}}"></video>
         </a>
-        <h5>{{video.title}}</h5>
+        <div class='card-summary'>
+            <h5>{{video.title}}</h5>
+            <p>card description</p>
+            <em>2020.10.31</em>
+        </div>
     </div>
 {% endmacro %}
 
 {% macro detail(video = {}, loggedUser = {}) %}
     <div id="videoDetailContainer">
-        <video src="{{video.fileUrl}}" id='videoInDetail' controls="controls" width='700' height='400' style='outline: none'></video>
+        <video src="{{video.fileUrl}}" id='videoInDetail' controls="controls"></video>
         {% if loggedUser and video.creator.id == loggedUser.id %}
-            <a href="/videos/{{video.id}}/edit">
+            <a href="/videos/{{video.id}}/edit" class='video-edit-btn'>
                 <button>Edit Video</button>
             </a>
         {% endif %}
@@ -19,17 +23,17 @@
         <p>{{video.description}}</p>
         {% if video.views === 1 %}
             <span>
-                <span style='font-size: 13px;' id='viewNum'>{{video.views}}</span>
+                <span id='viewNum'>{{video.views}}</span>
                 <em>view</em>
             </span>
         {% else %}
-            <span style='font-size: 13px;' id='viewNum'>
+            <span id='viewNum'>
                 <span>{{video.views}}</span>
                 <em>views</em>
             </span>
         {% endif %}
         <p>created by
-            <a href="/profile/{{video.creator.id}}" style="color: #339af0; text-decoration:none;">{{video.creator.name}}</a>
+            <a href="/profile/{{video.creator.id}}">{{video.creator.name}}</a>
         </p>
     </div>
 {% endmacro %}

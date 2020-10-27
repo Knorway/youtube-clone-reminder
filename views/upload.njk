@@ -3,10 +3,11 @@
 {% extends "layouts/main.njk" %}
 
 {% block content %}
-    <div id='previewContainer'>
-        <video id='videoPreview' style='background-color: gray;' width='200' height='300'></video>
-        <button id='recordButton'>Start Recoring</button>
-    </div>
+    <div class="upload-container">
+        <div id='previewContainer'>
+            <video id='videoPreview'></video>
+            <button id='recordButton'>Start Recoring</button>
+        </div>
 
-    {{formBlock.upload()}}
+        {{formBlock.upload()}}</div>
 {% endblock %}

@@ -1,22 +1,24 @@
-<header class="row u-full-width" style="margin: 12px;">
-    <div class="four columns" style="">
-        <a href="/" style="color: #000; text-decoration: none; font-size: 2.2rem; font-weight: 600;">Reminder</a>
+<header class='header'>
+    <div class='logo-container'>
+        <a href="/">VideoLog</a>
     </div>
 
-    <form action="/search" method='get' class="four columns" style="display:flex; justify-content: center;">
-        <input type="text" placeholder='search' name='keyword' class='u-full-width'>
-    </form>
-    <div class="four columns" style="margin-top: 0.8rem;">
+    <div class="form-container">
+        <form class='search-form' action="/search" method='get'>
+            <input type="text" placeholder='search' name='keyword'>
+        </form>
+    </div>
+    <div class='nav-container'>
         {% if loggedUser %}
-            <nav>
-                <a href="/upload" style="text-decoration: none;">Upload</a>
-                <a href="/profile/{{loggedUser.id}}" style="text-decoration: none; margin-left: 1rem;">Profile</a>
-                <a href="/logout" style="text-decoration: none;margin-left: 1rem;">Log out</a>
+            <nav class='nav'>
+                <a href="/upload">Upload</a>
+                <a href="/profile/{{loggedUser.id}}">Profile</a>
+                <a href="/logout">Log out</a>
             </nav>
         {% else %}
-            <nav>
-                <a href="/join" style="text-decoration: none; ">Join</a>
-                <a href="/login" style="text-decoration: none; margin-left: 1rem;">Log in</a>
+            <nav class='nav'>
+                <a href="/join">Join</a>
+                <a href="/login">Log in</a>
             </nav>
         {% endif %}
     </div>

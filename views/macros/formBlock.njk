@@ -1,7 +1,7 @@
 {% macro join() %}
-    <div >
+    <div class='join-container'>
         <h1>Join</h1>
-        <form action="/join" method='post'>
+        <form action="/join" method='post' class='join-form'>
             <input type="text" placeholder='name' name='name' required="required">
             <input type="email" placeholder='email' name='email' required="required">
             <input type="password" placeholder='password' name='password' required="required">
@@ -12,21 +12,21 @@
 {% endmacro %}
 
 {% macro login() %}
-    <div class='u-full-width'>
+    <div class='login-container'>
         <h1>Login</h1>
+        <form action="/login" method='post'>
+            <input type="email" placeholder='email' name='email' required="required">
+            <input type="password" placeholder='password' name='password' required="required">
+            <button>Login</button>
+        </form>
+        <a href="/auth/github">
+            <button>Login with Github</button>
+        </a>
     </div>
-    <form action="/login" method='post'>
-        <input type="email" placeholder='email' name='email' required="required">
-        <input type="password" placeholder='password' name='password' required="required">
-        <button>Login</button>
-    </form>
-    <a href="/auth/github">
-        <button>Login with Github</button>
-    </a>
 {% endmacro %}
 
 {% macro upload() %}
-    <div style='display: flex; flex-direction: column' class="container">
+    <div class='upload-form'>
         <h1>Upload</h1>
         <form action="/upload" method='post' enctype="multipart/form-data" style='display: flex; flex-direction: column'>
             <div>
@@ -41,14 +41,12 @@
 {% endmacro %}
 
 {% macro editVideo(video = {}) %}
-    <div style='display: flex; flex-direction: column;' class='u-full-width'>
-        <form action="/videos/{{video.id}}/edit" method='post' style='display: flex; flex-direction: column' class='u-full-width'>
-            <input type="text" name='title' value="{{video.title}}">
-            <textarea name='description'>{{video.description}}</textarea>
-            <button>edit video</button>
-        </form>
-        <form action="/videos/{{video.id}}/delete" method='post'>
-            <button style='background-color: #c92a2a; color: white; border: none;'>delete video</button>
-        </form>
-    </div>
+    <form action="/videos/{{video.id}}/edit" method='post' class='edit-video-form'>
+        <input type="text" name='title' value="{{video.title}}">
+        <textarea name='description'>{{video.description}}</textarea>
+        <button>edit video</button>
+    </form>
+    <form action="/videos/{{video.id}}/delete" method='post'>
+        <button class='delete-btn'>delete video</button>
+    </form>
 {% endmacro %}

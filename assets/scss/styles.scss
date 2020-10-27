@@ -1,4 +1,12 @@
 @import './config/normalize';
 @import './config/skeleton';
 
-@import './config/variables';
+@import './partials/header.scss';
+@import './config/variables.scss';
+@import './main.scss';
+
+@import './pages/home.scss';
+@import './pages/videoDetail.scss';
+@import './pages/upload.scss';
+@import './pages/profile.scss';
+@import './pages/submitForms.scss';

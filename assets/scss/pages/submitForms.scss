@@ -1,0 +1,45 @@
+.join-container {
+	max-width: 1024px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	.join-form {
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+	}
+}
+
+.login-container {
+	max-width: 1024px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.edit-video-container {
+	max-width: 1024px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	.edit-video-form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+		input,
+		textarea,
+		button {
+			width: 100%;
+		}
+	}
+	.delete-btn {
+		background-color: #c92a2a;
+		color: white;
+		border: none;
+	}
+}

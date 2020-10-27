@@ -3,12 +3,14 @@
 {% extends "layouts/main.njk" %}
 
 {% block content %}
-    <div class='u-full-width'>
-        <h1>searching by
-            {{keyword}}</h1>
+    <div>
+        <h1>search result for keyword
+            <u>{{keyword}}</u>
+        </h1>
     </div>
-    {% for video in videos %}
-        {{videoBlock.home(video)}}
-    {% endfor %}
-
+    <div class='home-container'>
+        {% for video in videos %}
+            {{videoBlock.home(video)}}
+        {% endfor %}
+    </div>
 {% endblock %}
