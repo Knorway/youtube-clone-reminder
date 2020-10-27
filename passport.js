@@ -14,7 +14,7 @@ passport.use(
 			clientID: process.env.GH_ID,
 			clientSecret: process.env.GH_SECRET,
 			callbackURL:
-				process.env.NODE_ENV === 'production'
+				process.env.NODE_ENV == 'production'
 					? 'http://localhost:4000/auth/github/callback'
 					: 'https://mighty-hamlet-80732.herokuapp.com/auth/github/callback',
 		},
