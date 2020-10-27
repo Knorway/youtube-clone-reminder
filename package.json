@@ -5,7 +5,6 @@
   "scripts": {
     "dev:server": "nodemon server.js",
     "dev:assets": "webpack --mode development -w",
-    "dev:start": "npm run dev:server && npm run dev:assets",
     "build:assets": "webpack --mode production",
     "postinstall": "npm run build:assets",
     "start": "node server.js"
