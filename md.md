@@ -8,3 +8,8 @@
 ## Make this my first portfolio
 - [ ] styling (card, layouts, recent)
 - [ ] organizing (fake vlogs, Md on github, recording, etc) 
+
+## Things to do NEXT-
+- [ ] Hexo blog
+- [ ] Node.js book
+- [ ] Crawling bot
