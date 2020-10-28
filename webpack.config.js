@@ -32,6 +32,7 @@ const config = {
 			filename: '[name].css',
 		}),
 	],
+	devtool: 'cheap-module-source-map',
 };
 
 module.exports = config;
