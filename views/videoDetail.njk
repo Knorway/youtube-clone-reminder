@@ -18,7 +18,7 @@
                 <span>
                     <li class='comment-item'>{{comment.text}}
                         {% if comment.creator == user.id %}
-                            <i class="fas fa-trash delete-icon" data-src='{{comment.id}}'></i>
+                            <i class="far fa-times-circle delete-icon" data-src='{{comment.id}}'></i>
                         {% endif %}
                     </li>
                 </span>

@@ -3,6 +3,11 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 12px;
+	@include media('<620px') {
+		flex-direction: column;
+		max-width: 80%;
+		margin: 0 auto;
+	}
 	.logo-container {
 		flex: 1;
 		a {
@@ -16,12 +21,19 @@
 		flex: 1;
 		display: flex;
 		justify-content: center;
+		@include media('<620px') {
+			width: 100%;
+		}
 		.search-form {
 			width: 100%;
 			margin: 0;
 			& input {
 				margin: 0;
 				width: 90%;
+				@include media('<620px') {
+					width: 100%;
+					margin-bottom: 1rem;
+				}
 			}
 		}
 	}

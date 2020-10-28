@@ -14,9 +14,9 @@ const addHandler = (e) => {
 			if (res.data.success) {
 				const span = document.createElement('span');
 				span.innerHTML = `
-					<li>
+					<li class='comment-item'>
 						${comment}
-						<i class="fas fa-trash delete-icon" data-src=${res.data.id}></i>
+						<i class="far fa-times-circle delete-icon" data-src=${res.data.id}></i>
 					</li>
 				`;
 				span.addEventListener('click', deleteHandler);

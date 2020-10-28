@@ -4,6 +4,12 @@
 	grid-template-columns: repeat(3, 300px);
 	justify-content: center;
 	gap: 8px;
+	@include media('<1024px') {
+		grid-template-columns: repeat(auto-fit, 300px);
+	}
+	@include media('<777px') {
+		grid-template-columns: minmax(300px, 1fr);
+	}
 	.home-card-container {
 		border: 1px solid #e6e6e6;
 		border-radius: 5px;
@@ -17,6 +23,23 @@
 			padding: 12px;
 			em {
 				font-size: 12px;
+			}
+			.card-date-icon {
+				color: darkgray;
+				font-size: 12px;
+				margin-right: 3px;
+			}
+			.card-views-info {
+				.card-view-icon {
+					color: darkgray;
+					font-size: 11px;
+					margin-left: 6px;
+				}
+				em {
+					margin-left: 2px;
+					color: darkgray;
+					font-size: 11px;
+				}
 			}
 		}
 	}

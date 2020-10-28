@@ -32,8 +32,12 @@
 			text-align: center;
 			width: 320px;
 			word-wrap: break-word;
+			position: relative;
 			.delete-icon {
 				cursor: pointer;
+				position: absolute;
+				top: 40%;
+				right: 2%;
 			}
 		}
 	}

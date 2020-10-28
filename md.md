@@ -6,10 +6,9 @@
 - [x] deploy
 
 ## Make this my first portfolio
-- [ ] styling (card, layouts, recent)
+- [x] styling (card, layouts, recent)
+- [x] finising (responsive, details, update, etc)
 - [ ] organizing (fake vlogs, Md on github, recording, etc) 
 
 ## Things to do NEXT-
-- [ ] Hexo blog
-- [ ] Node.js book
-- [ ] Crawling bot
+- [x] Hexo blog

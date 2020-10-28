@@ -6,7 +6,13 @@
         <div class='card-summary'>
             <h5>{{video.title}}</h5>
             <p>card description</p>
-            <em>2020.10.31</em>
+            {# <i class="far fa-calendar-alt card-date-icon"></i> #}
+            <em>posted at</em>
+            <em>{{video.createdAt.toISOString().substring(0, 10)}}</em>
+            <span class='card-views-info'>
+                <i class="fas fa-eye card-view-icon"></i>
+                <em>{{video.views}}</em>
+            </span>
         </div>
     </div>
 {% endmacro %}
